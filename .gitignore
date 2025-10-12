@@ -1,0 +1,23 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+venv/
+
+db.sqlite3
+
+migrations/
+
+*.egg-info/
+dist/
+build/
+*.egg
+
+*.pyc
+*.swp
+*.swo
+*.log
+*.bak
+.DS_Store
+.env
