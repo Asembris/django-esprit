@@ -1,7 +1,26 @@
 from django.db import models
 from django.core.validators import MaxLengthValidator
 from django.core.exceptions import ValidationError
+import random
+import string
+from django.utils import *
 # Create your models here.
+
+def generate_submission_id():
+    letters = ''.join(random.choices(string.ascii_uppercase, k=8))
+    return f"SUB{letters}"
+def validate_keywords(value):
+    # Sépare les mots par virgules et supprime les espaces inutiles
+    keywords = [k.strip() for k in value.split(',') if k.strip()]
+    if len(keywords) > 10:
+        raise ValidationError("You can specify a maximum of 10 keywords separated by commas.")
+def validate_keywords(value):
+    # Sépare les mots par virgules et supprime les espaces inutiles
+        keywords = [k.strip() for k in value.split(',') if k.strip()]
+        if len(keywords) > 10:
+            raise ValidationError("You can specify a maximum of 10 keywords separated by commas.")    
+
+
 class Conference(models.Model):
     conference_id=models.AutoField("coference_id",primary_key=True)
     name=models.CharField("name",max_length=10)
